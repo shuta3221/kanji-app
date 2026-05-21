@@ -25,93 +25,88 @@ function fmt(text,learned){
   return out;
 }
 
-// ===== 漢字データ =====
-// 各エントリ: {k:漢字, r:[{y:よみ, e:例文}]}
-// 例文は「その学年で習う漢字のみ」使用。未習は fmt() で変換される。
-
 const D1=[
-  {k:"一",r:[{y:"ひと",e:"一つある。"},{y:"いち",e:"一月は さむい。"}]},
-  {k:"右",r:[{y:"みぎ",e:"右に まがる。"},{y:"う",e:"右折する。"}]},
-  {k:"雨",r:[{y:"あめ",e:"雨が ふる。"},{y:"う",e:"雨天で やすむ。"}]},
-  {k:"円",r:[{y:"まる",e:"円い 月。"},{y:"えん",e:"百円で かう。"}]},
+  {k:"一",r:[{y:"ひと",e:"一つある。"},{y:"いち",e:"一がつは さむい。"}]},
+  {k:"右",r:[{y:"みぎ",e:"右に まがる。"},{y:"う",e:"右せつする。"}]},
+  {k:"雨",r:[{y:"あめ",e:"雨が ふる。"},{y:"う",e:"雨てんで やすむ。"}]},
+  {k:"円",r:[{y:"まる",e:"円い つき。"},{y:"えん",e:"ひゃく円で かう。"}]},
   {k:"王",r:[{y:"おう",e:"王さまが いる。"}]},
-  {k:"音",r:[{y:"おと",e:"音が する。"},{y:"ね",e:"音色が きれい。"},{y:"おん",e:"音楽を きく。"}]},
-  {k:"下",r:[{y:"した",e:"下に いる。"},{y:"さ",e:"下がる。"},{y:"か",e:"地下に ある。"}]},
-  {k:"火",r:[{y:"ひ",e:"火を つける。"},{y:"か",e:"火山が ある。"}]},
+  {k:"音",r:[{y:"おと",e:"音が する。"},{y:"ね",e:"音いろが きれい。"},{y:"おん",e:"音がくを きく。"}]},
+  {k:"下",r:[{y:"した",e:"下に いる。"},{y:"さ",e:"下がる。"},{y:"か",e:"ち下に ある。"}]},
+  {k:"火",r:[{y:"ひ",e:"火を つける。"},{y:"か",e:"火ざんが ある。"}]},
   {k:"花",r:[{y:"はな",e:"花が さく。"},{y:"か",e:"花火が あがる。"}]},
   {k:"貝",r:[{y:"かい",e:"貝を ひろう。"}]},
-  {k:"学",r:[{y:"まな",e:"学ぶ。"},{y:"がく",e:"学校へ いく。"}]},
-  {k:"気",r:[{y:"き",e:"元気に なる。"},{y:"け",e:"気配を かんじる。"}]},
-  {k:"九",r:[{y:"ここの",e:"九つ ある。"},{y:"きゅう",e:"九月に なる。"}]},
-  {k:"休",r:[{y:"やす",e:"学校を 休む。"},{y:"きゅう",e:"休日に でかける。"}]},
-  {k:"玉",r:[{y:"たま",e:"玉を ころがす。"},{y:"ぎょく",e:"玉手箱を あける。"}]},
-  {k:"金",r:[{y:"かね",e:"お金を もつ。"},{y:"きん",e:"金色に ひかる。"}]},
-  {k:"空",r:[{y:"そら",e:"空が あおい。"},{y:"から",e:"空っぽに なる。"},{y:"くう",e:"空気が きれい。"}]},
-  {k:"月",r:[{y:"つき",e:"月が でる。"},{y:"がつ",e:"一月に なる。"}]},
+  {k:"学",r:[{y:"まな",e:"学ぶ。"},{y:"がく",e:"学こうへ いく。"}]},
+  {k:"気",r:[{y:"き",e:"げん気に なる。"},{y:"け",e:"気はいを かんじる。"}]},
+  {k:"九",r:[{y:"ここの",e:"九つ ある。"},{y:"く",e:"九がつに なる。"},{y:"きゅう",e:"九ばんの バッター。"}]},
+  {k:"休",r:[{y:"やす",e:"がっこうを 休む。"},{y:"きゅう",e:"休じつに でかける。"}]},
+  {k:"玉",r:[{y:"たま",e:"玉を ころがす。"},{y:"ぎょく",e:"玉てばこを あける。"}]},
+  {k:"金",r:[{y:"かね",e:"お金を もつ。"},{y:"きん",e:"金いろに ひかる。"}]},
+  {k:"空",r:[{y:"そら",e:"空が あおい。"},{y:"から",e:"空っぽに なる。"},{y:"くう",e:"空きが きれい。"}]},
+  {k:"月",r:[{y:"つき",e:"月が でる。"},{y:"がつ",e:"いち月に なる。"}]},
   {k:"犬",r:[{y:"いぬ",e:"犬を かう。"}]},
-  {k:"見",r:[{y:"み",e:"星を 見る。"},{y:"けん",e:"見学に いく。"}]},
+  {k:"見",r:[{y:"み",e:"ほしを 見る。"},{y:"けん",e:"見がくに いく。"}]},
   {k:"五",r:[{y:"いつ",e:"五つ ある。"},{y:"ご",e:"五月に なる。"}]},
-  {k:"口",r:[{y:"くち",e:"口を あける。"},{y:"こう",e:"人口が おおい。"}]},
-  {k:"校",r:[{y:"こう",e:"学校に いく。"}]},
-  {k:"左",r:[{y:"ひだり",e:"左に まがる。"},{y:"さ",e:"左折する。"}]},
-  {k:"三",r:[{y:"みっ",e:"三つ ある。"},{y:"さん",e:"三月に なる。"}]},
-  {k:"山",r:[{y:"やま",e:"山に のぼる。"},{y:"さん",e:"火山が ある。"}]},
-  {k:"子",r:[{y:"こ",e:"子どもが あそぶ。"},{y:"し",e:"親子で いく。"}]},
-  {k:"四",r:[{y:"よっ",e:"四つ ある。"},{y:"し",e:"四月に なる。"}]},
+  {k:"口",r:[{y:"くち",e:"口を あける。"},{y:"こう",e:"じん口が おおい。"}]},
+  {k:"校",r:[{y:"こう",e:"がく校に いく。"}]},
+  {k:"左",r:[{y:"ひだり",e:"左に まがる。"},{y:"さ",e:"左せつする。"}]},
+  {k:"三",r:[{y:"みっ",e:"三つ ある。"},{y:"さん",e:"三がつに なる。"}]},
+  {k:"山",r:[{y:"やま",e:"山に のぼる。"},{y:"さん",e:"か山が ある。"}]},
+  {k:"子",r:[{y:"こ",e:"子どもが あそぶ。"},{y:"し",e:"じょ子が あつまる。"}]},
+  {k:"四",r:[{y:"よっ",e:"四つ ある。"},{y:"し",e:"四がつに なる。"},{y:"よん",e:"四にんで はしる。"},{y:"よ",e:"四か つづく。"}]},
   {k:"糸",r:[{y:"いと",e:"糸で ぬう。"},{y:"し",e:"糸口を みつける。"}]},
   {k:"字",r:[{y:"じ",e:"字を かく。"}]},
   {k:"耳",r:[{y:"みみ",e:"耳を すます。"}]},
-  {k:"七",r:[{y:"なな",e:"七つ ある。"},{y:"しち",e:"七月に なる。"}]},
-  {k:"車",r:[{y:"くるま",e:"車に のる。"},{y:"しゃ",e:"電車に のる。"}]},
-  {k:"手",r:[{y:"て",e:"手を あらう。"},{y:"しゅ",e:"手話で はなす。"}]},
-  {k:"十",r:[{y:"とお",e:"十 ある。"},{y:"じゅう",e:"十月に なる。"}]},
-  {k:"出",r:[{y:"で",e:"外に 出る。"},{y:"だ",e:"出す。"},{y:"しゅつ",e:"出発する。"}]},
-  {k:"女",r:[{y:"おんな",e:"女の 子。"},{y:"じょ",e:"女王さま。"}]},
-  {k:"小",r:[{y:"ちい",e:"小さい 虫。"},{y:"こ",e:"小川で あそぶ。"},{y:"しょう",e:"小学校に いく。"}]},
-  {k:"上",r:[{y:"うえ",e:"上に おく。"},{y:"あ",e:"上がる。"},{y:"じょう",e:"上手に かく。"}]},
-  {k:"森",r:[{y:"もり",e:"森の 中。"},{y:"しん",e:"森林が ある。"}]},
-  {k:"人",r:[{y:"ひと",e:"人が いる。"},{y:"じん",e:"人口が ある。"}]},
-  {k:"水",r:[{y:"みず",e:"水を のむ。"},{y:"すい",e:"水曜日に ある。"}]},
-  {k:"正",r:[{y:"ただ",e:"正しく かく。"},{y:"しょう",e:"正月に あう。"}]},
-  {k:"生",r:[{y:"い",e:"生きる。"},{y:"なま",e:"生もの。"},{y:"せい",e:"先生に きく。"}]},
-  {k:"青",r:[{y:"あお",e:"青い 空。"},{y:"せい",e:"青年に なる。"}]},
-  {k:"夕",r:[{y:"ゆう",e:"夕日が しずむ。"}]},
-  {k:"石",r:[{y:"いし",e:"石を ひろう。"},{y:"せき",e:"石油を つかう。"}]},
-  {k:"赤",r:[{y:"あか",e:"赤い 花。"},{y:"せき",e:"赤道が ある。"}]},
-  {k:"千",r:[{y:"ち",e:"千鳥が いる。"},{y:"せん",e:"千円を もつ。"}]},
-  {k:"川",r:[{y:"かわ",e:"川で あそぶ。"},{y:"せん",e:"河川が ある。"}]},
-  {k:"先",r:[{y:"さき",e:"先に いく。"},{y:"せん",e:"先生に きく。"}]},
-  {k:"早",r:[{y:"はや",e:"早く おきる。"},{y:"そう",e:"早起きする。"}]},
-  {k:"草",r:[{y:"くさ",e:"草が はえる。"},{y:"そう",e:"草原を あるく。"}]},
+  {k:"七",r:[{y:"なな",e:"七つ ある。"},{y:"しち",e:"七がつに なる。"},{y:"なの",e:"七か かかる。"}]},
+  {k:"車",r:[{y:"くるま",e:"車に のる。"},{y:"しゃ",e:"でん車に のる。"}]},
+  {k:"手",r:[{y:"て",e:"手を あらう。"},{y:"しゅ",e:"手わで はなす。"}]},
+  {k:"十",r:[{y:"とお",e:"十 ある。"},{y:"じゅう",e:"十がつに なる。"},{y:"じっ",e:"十かい おす。"}]},
+  {k:"出",r:[{y:"で",e:"そとに 出る。"},{y:"だ",e:"出す。"},{y:"しゅつ",e:"出ぱつする。"}]},
+  {k:"女",r:[{y:"おんな",e:"女の こ。"},{y:"じょ",e:"女おうさま。"}]},
+  {k:"小",r:[{y:"ちい",e:"小さい むし。"},{y:"こ",e:"小がわで あそぶ。"},{y:"しょう",e:"小がっこうに いく。"}]},
+  {k:"上",r:[{y:"うえ",e:"上に おく。"},{y:"あ",e:"上がる。"},{y:"じょう",e:"上ずに かく。"}]},
+  {k:"森",r:[{y:"もり",e:"森の 中。"},{y:"しん",e:"森りんが ある。"}]},
+  {k:"人",r:[{y:"ひと",e:"人が いる。"},{y:"じん",e:"人こうが ある。"},{y:"にん",e:"さん人の なかま。"}]},
+  {k:"水",r:[{y:"みず",e:"水を のむ。"},{y:"すい",e:"水よう日に ある。"}]},
+  {k:"正",r:[{y:"ただ",e:"正しく かく。"},{y:"しょう",e:"正がつに あう。"}]},
+  {k:"生",r:[{y:"い",e:"生きる。"},{y:"なま",e:"生もの。"},{y:"せい",e:"せん生に きく。"},{y:"は",e:"くさが 生える。"},{y:"しょう",e:"いっ生 わすれない。"}]},
+  {k:"青",r:[{y:"あお",e:"青い そら。"},{y:"せい",e:"青ねんに なる。"}]},
+  {k:"夕",r:[{y:"ゆう",e:"夕ひが しずむ。"}]},
+  {k:"石",r:[{y:"いし",e:"石を ひろう。"},{y:"せき",e:"石ゆを つかう。"}]},
+  {k:"赤",r:[{y:"あか",e:"赤い はな。"},{y:"せき",e:"赤どうが ある。"}]},
+  {k:"千",r:[{y:"ち",e:"千どりが いる。"},{y:"せん",e:"千えんを もつ。"}]},
+  {k:"川",r:[{y:"かわ",e:"川で あそぶ。"},{y:"せん",e:"か川が ある。"}]},
+  {k:"先",r:[{y:"さき",e:"先に いく。"},{y:"せん",e:"先せいに きく。"}]},
+  {k:"早",r:[{y:"はや",e:"早く おきる。"},{y:"そう",e:"早ちょうに おきる。"}]},
+  {k:"草",r:[{y:"くさ",e:"草が はえる。"},{y:"そう",e:"草げんを あるく。"}]},
   {k:"足",r:[{y:"あし",e:"足が はやい。"},{y:"た",e:"足りる。"},{y:"そく",e:"足音が する。"}]},
-  {k:"村",r:[{y:"むら",e:"村に かえる。"},{y:"そん",e:"村長が いる。"}]},
-  {k:"大",r:[{y:"おお",e:"大きな 山。"},{y:"だい",e:"大学に いく。"},{y:"たい",e:"大切に する。"}]},
-  {k:"男",r:[{y:"おとこ",e:"男の 子。"},{y:"だん",e:"男子が はしる。"}]},
-  {k:"竹",r:[{y:"たけ",e:"竹の 子。"},{y:"ちく",e:"竹林が ある。"}]},
-  {k:"中",r:[{y:"なか",e:"中に ある。"},{y:"ちゅう",e:"中学校に いく。"}]},
-  {k:"虫",r:[{y:"むし",e:"虫を みる。"},{y:"ちゅう",e:"昆虫を みる。"}]},
-  {k:"町",r:[{y:"まち",e:"町を あるく。"},{y:"ちょう",e:"町長が いる。"}]},
-  {k:"天",r:[{y:"てん",e:"天気が よい。"},{y:"あま",e:"天の川が みえる。"}]},
-  {k:"田",r:[{y:"た",e:"田んぼを みる。"},{y:"でん",e:"田園が ある。"}]},
-  {k:"土",r:[{y:"つち",e:"土を ほる。"},{y:"ど",e:"土曜日に あそぶ。"}]},
-  {k:"二",r:[{y:"ふた",e:"二つ ある。"},{y:"に",e:"二月に なる。"}]},
-  {k:"日",r:[{y:"ひ",e:"日が のぼる。"},{y:"にち",e:"日曜日に やすむ。"},{y:"か",e:"三日が たつ。"}]},
-  {k:"入",r:[{y:"い",e:"中に 入る。"},{y:"にゅう",e:"入学する。"}]},
-  {k:"年",r:[{y:"とし",e:"年を とる。"},{y:"ねん",e:"一年生に なる。"}]},
-  {k:"白",r:[{y:"しろ",e:"白い 雪。"},{y:"はく",e:"白紙に かく。"}]},
-  {k:"八",r:[{y:"やっ",e:"八つ ある。"},{y:"はち",e:"八月に なる。"}]},
-  {k:"百",r:[{y:"ひゃく",e:"百円で かう。"}]},
-  {k:"文",r:[{y:"ふみ",e:"文を かく。"},{y:"もん",e:"文字を かく。"},{y:"ぶん",e:"文章を よむ。"}]},
-  {k:"木",r:[{y:"き",e:"木に のぼる。"},{y:"もく",e:"木曜日に ある。"},{y:"こ",e:"木の葉が おちる。"}]},
-  {k:"本",r:[{y:"もと",e:"木の 本。"},{y:"ほん",e:"本を よむ。"}]},
-  {k:"名",r:[{y:"な",e:"名まえを かく。"},{y:"めい",e:"名前を よぶ。"}]},
-  {k:"目",r:[{y:"め",e:"目を あける。"},{y:"もく",e:"目次を みる。"}]},
-  {k:"立",r:[{y:"た",e:"立って まつ。"},{y:"りつ",e:"立体を かく。"}]},
-  {k:"力",r:[{y:"ちから",e:"力を だす。"},{y:"りょく",e:"体力を つける。"}]},
-  {k:"林",r:[{y:"はやし",e:"林の 中。"},{y:"りん",e:"竹林が ある。"}]},
+  {k:"村",r:[{y:"むら",e:"村に かえる。"},{y:"そん",e:"村ちょうが いる。"}]},
+  {k:"大",r:[{y:"おお",e:"大きな やま。"},{y:"だい",e:"大がくに いく。"},{y:"たい",e:"大せつに する。"}]},
+  {k:"男",r:[{y:"おとこ",e:"男の こ。"},{y:"だん",e:"男しが はしる。"}]},
+  {k:"竹",r:[{y:"たけ",e:"竹の こ。"},{y:"ちく",e:"竹りんが ある。"}]},
+  {k:"中",r:[{y:"なか",e:"中に ある。"},{y:"ちゅう",e:"中がっこうに いく。"}]},
+  {k:"虫",r:[{y:"むし",e:"虫を みる。"},{y:"ちゅう",e:"こん虫を みる。"}]},
+  {k:"町",r:[{y:"まち",e:"町を あるく。"},{y:"ちょう",e:"町ちょうが いる。"}]},
+  {k:"天",r:[{y:"てん",e:"天きが よい。"},{y:"あま",e:"天のかわが みえる。"}]},
+  {k:"田",r:[{y:"た",e:"田んぼを みる。"},{y:"でん",e:"田えんが ある。"}]},
+  {k:"土",r:[{y:"つち",e:"土を ほる。"},{y:"ど",e:"土よう日に あそぶ。"}]},
+  {k:"二",r:[{y:"ふた",e:"二つ ある。"},{y:"に",e:"二がつに なる。"}]},
+  {k:"日",r:[{y:"ひ",e:"日が のぼる。"},{y:"にち",e:"日よう日に やすむ。"},{y:"か",e:"みっ日が たつ。"},{y:"じつ",e:"へい日に いく。"}]},
+  {k:"入",r:[{y:"はい",e:"中に 入る。"},{y:"にゅう",e:"入がくする。"}]},
+  {k:"年",r:[{y:"とし",e:"年を とる。"},{y:"ねん",e:"いち年せいに なる。"}]},
+  {k:"白",r:[{y:"しろ",e:"白い ゆき。"},{y:"はく",e:"白しに かく。"}]},
+  {k:"八",r:[{y:"やっ",e:"八つ ある。"},{y:"はち",e:"八がつに なる。"},{y:"や",e:"八おやに いく。"}]},
+  {k:"百",r:[{y:"ひゃく",e:"百えんで かう。"}]},
+  {k:"文",r:[{y:"ふみ",e:"文を かく。"},{y:"もん",e:"文じを かく。"},{y:"ぶん",e:"文しょうを よむ。"}]},
+  {k:"木",r:[{y:"き",e:"木に のぼる。"},{y:"もく",e:"木よう日に ある。"},{y:"こ",e:"木のはが おちる。"}]},
+  {k:"本",r:[{y:"もと",e:"きの 本。"},{y:"ほん",e:"本を よむ。"}]},
+  {k:"名",r:[{y:"な",e:"名まえを かく。"},{y:"めい",e:"名じんに なる。"}]},
+  {k:"目",r:[{y:"め",e:"目を あける。"},{y:"もく",e:"目じを みる。"}]},
+  {k:"立",r:[{y:"た",e:"立って まつ。"},{y:"りつ",e:"立たいを かく。"}]},
+  {k:"力",r:[{y:"ちから",e:"力を だす。"},{y:"りょく",e:"たい力を つける。"}]},
+  {k:"林",r:[{y:"はやし",e:"林の 中。"},{y:"りん",e:"ちく林が ある。"}]},
   {k:"六",r:[{y:"むっ",e:"六つ ある。"},{y:"ろく",e:"六月に なる。"}]},
 ];
-
 const D2=[
   {k:"引",r:[{y:"ひ",e:"ドアを 引く。"},{y:"いん",e:"引力が はたらく。"}]},
   {k:"羽",r:[{y:"はね",e:"鳥の 羽。"},{y:"う",e:"羽毛が やわらかい。"}]},
@@ -153,7 +148,7 @@ const D2=[
   {k:"原",r:[{y:"はら",e:"野原で あそぶ。"},{y:"げん",e:"原因を しらべる。"}]},
   {k:"戸",r:[{y:"と",e:"戸を しめる。"},{y:"こ",e:"江戸の 歴史。"}]},
   {k:"古",r:[{y:"ふる",e:"古い 本。"},{y:"こ",e:"古代の 話。"}]},
-  {k:"午",r:[{y:"ご",e:"午後に べんきょう。"},{y:"ご",e:"午前に おきる。"}]},
+  {k:"午",r:[{y:"ご",e:"午後に べんきょう。"}]},
   {k:"後",r:[{y:"あと",e:"食事の 後。"},{y:"ご",e:"午後に いく。"}]},
   {k:"語",r:[{y:"かた",e:"物語を 語る。"},{y:"ご",e:"国語が すき。"}]},
   {k:"工",r:[{y:"こう",e:"工作で つくる。"}]},
@@ -238,7 +233,7 @@ const D2=[
   {k:"読",r:[{y:"よ",e:"本を 読む。"},{y:"どく",e:"読書する。"}]},
   {k:"内",r:[{y:"うち",e:"家の 内。"},{y:"ない",e:"内容を みる。"}]},
   {k:"南",r:[{y:"みなみ",e:"南に いく。"},{y:"なん",e:"南極を みる。"}]},
-  {k:"肉",r:[{y:"にく",e:"肉を やく。"},{y:"にく",e:"肉体を きたえる。"}]},
+  {k:"肉",r:[{y:"にく",e:"肉を やく。"}]},
   {k:"馬",r:[{y:"うま",e:"馬に のる。"},{y:"ば",e:"馬力が ある。"}]},
   {k:"売",r:[{y:"う",e:"ケーキを 売る。"},{y:"ばい",e:"売買する。"}]},
   {k:"買",r:[{y:"か",e:"野菜を 買う。"},{y:"ばい",e:"売買する。"}]},
@@ -260,7 +255,7 @@ const D2=[
   {k:"明",r:[{y:"あか",e:"明るい 部屋。"},{y:"めい",e:"説明する。"}]},
   {k:"鳴",r:[{y:"な",e:"鳥が 鳴く。"},{y:"めい",e:"鳴動する。"}]},
   {k:"毛",r:[{y:"け",e:"猫の 毛。"},{y:"もう",e:"毛筆で かく。"}]},
-  {k:"門",r:[{y:"もん",e:"学校の 門。"},{y:"もん",e:"門番が いる。"}]},
+  {k:"門",r:[{y:"もん",e:"学校の 門。"}]},
   {k:"夜",r:[{y:"よる",e:"夜に みる。"},{y:"や",e:"夜間に いく。"}]},
   {k:"野",r:[{y:"の",e:"野原で あそぶ。"},{y:"や",e:"野球を みる。"}]},
   {k:"友",r:[{y:"とも",e:"友だちと いく。"},{y:"ゆう",e:"友情を もつ。"}]},
@@ -271,7 +266,6 @@ const D2=[
   {k:"理",r:[{y:"り",e:"理科が すき。"}]},
   {k:"話",r:[{y:"はな",e:"友だちと 話す。"},{y:"わ",e:"会話する。"}]},
 ];
-
 const D3=[
   {k:"悪",r:[{y:"わる",e:"悪いことを しない。"},{y:"あく",e:"悪人が つかまる。"}]},
   {k:"安",r:[{y:"やす",e:"安いねだんで かう。"},{y:"あん",e:"安全に する。"}]},
@@ -310,7 +304,7 @@ const D3=[
   {k:"球",r:[{y:"たま",e:"球を なげる。"},{y:"きゅう",e:"野球を みる。"}]},
   {k:"去",r:[{y:"さ",e:"その場を 去る。"},{y:"きょ",e:"去年の こと。"}]},
   {k:"橋",r:[{y:"はし",e:"橋を わたる。"},{y:"きょう",e:"鉄橋が ある。"}]},
-  {k:"業",r:[{y:"わざ",e:"技を 業として みがく。"},{y:"ぎょう",e:"農業を まなぶ。"}]},
+  {k:"業",r:[{y:"わざ",e:"技を みがく。"},{y:"ぎょう",e:"農業を まなぶ。"}]},
   {k:"曲",r:[{y:"ま",e:"道が 曲がる。"},{y:"きょく",e:"音楽の 曲。"}]},
   {k:"局",r:[{y:"きょく",e:"郵便局に いく。"}]},
   {k:"銀",r:[{y:"ぎん",e:"銀色の 星。"},{y:"ぎん",e:"銀行に いく。"}]},
@@ -435,7 +429,7 @@ const D3=[
   {k:"放",r:[{y:"はな",e:"手を 放す。"},{y:"ほう",e:"放送する。"}]},
   {k:"味",r:[{y:"あじ",e:"料理の 味。"},{y:"み",e:"興味を もつ。"}]},
   {k:"命",r:[{y:"いのち",e:"命を 大切に。"},{y:"めい",e:"命令する。"}]},
-  {k:"面",r:[{y:"おもて",e:"面白い 話。"},{y:"めん",e:"面白い 話。"}]},
+  {k:"面",r:[{y:"おもて",e:"面白い 話。"},{y:"めん",e:"面接する。"}]},
   {k:"問",r:[{y:"と",e:"先生に 問う。"},{y:"もん",e:"問題を とく。"}]},
   {k:"役",r:[{y:"やく",e:"主役を する。"}]},
   {k:"薬",r:[{y:"くすり",e:"薬を のむ。"},{y:"やく",e:"薬草を さがす。"}]},
@@ -460,8 +454,6 @@ const D3=[
   {k:"路",r:[{y:"みち",e:"路地を あるく。"},{y:"ろ",e:"道路を わたる。"}]},
   {k:"和",r:[{y:"やわ",e:"和やかだ。"},{y:"わ",e:"和食を たべる。"}]},
 ];
-
-// 4・5・6年生データ（前回と同じ内容を維持）
 const D4=[
   {k:"愛",r:[{y:"あい",e:"愛する家族。"},{y:"あい",e:"愛情を もつ。"}]},
   {k:"案",r:[{y:"あん",e:"よい案が うかぶ。"}]},
@@ -651,7 +643,6 @@ const D4=[
   {k:"録",r:[{y:"ろく",e:"記録する。"}]},
   {k:"望",r:[{y:"のぞ",e:"医者に なることを 望む。"},{y:"ぼう",e:"希望を もつ。"}]},
 ];
-
 const D5=[
   {k:"圧",r:[{y:"お",e:"ボタンを 圧す。"},{y:"あつ",e:"気圧が さがる。"}]},
   {k:"移",r:[{y:"うつ",e:"新しい 家に 移る。"},{y:"い",e:"移動する。"}]},
@@ -726,7 +717,7 @@ const D5=[
   {k:"似",r:[{y:"に",e:"友だちに 似る。"},{y:"じ",e:"類似する。"}]},
   {k:"支",r:[{y:"ささ",e:"棒で 支える。"},{y:"し",e:"支援する。"}]},
   {k:"士",r:[{y:"し",e:"武士が いる。"}]},
-  {k:"師",r:[{y:"し",e:"先生（師）に まなぶ。"}]},
+  {k:"師",r:[{y:"し",e:"先生に まなぶ。"}]},
   {k:"志",r:[{y:"こころざ",e:"高い 志。"},{y:"し",e:"志望校を きめる。"}]},
   {k:"枝",r:[{y:"えだ",e:"木の 枝。"},{y:"し",e:"枝葉を きる。"}]},
   {k:"資",r:[{y:"し",e:"資料を よむ。"}]},
@@ -779,7 +770,6 @@ const D5=[
   {k:"団",r:[{y:"だん",e:"団体で いく。"}]},
   {k:"断",r:[{y:"た",e:"枝を 断つ。"},{y:"だん",e:"判断する。"}]},
   {k:"築",r:[{y:"きず",e:"信頼を 築く。"},{y:"ちく",e:"建築する。"}]},
-  {k:"貯",r:[{y:"たくわ",e:"お金を 貯える。"},{y:"ちょ",e:"貯金する。"}]},
   {k:"張",r:[{y:"は",e:"テントを 張る。"},{y:"ちょう",e:"主張する。"}]},
   {k:"提",r:[{y:"さ",e:"手を 提げる。"},{y:"てい",e:"提案する。"}]},
   {k:"程",r:[{y:"ほど",e:"この 程度。"},{y:"てい",e:"程度を きめる。"}]},
@@ -830,8 +820,6 @@ const D5=[
   {k:"留",r:[{y:"と",e:"外国に 留まる。"},{y:"りゅう",e:"留学する。"}]},
   {k:"領",r:[{y:"りょう",e:"領土を まもる。"}]},
 ];
-
-// 6年生データは前回と同じ（省略せず）
 const D6=[
   {k:"胃",r:[{y:"い",e:"胃が いたい。"},{y:"い",e:"胃腸薬を のむ。"}]},
   {k:"異",r:[{y:"こと",e:"意見が 異なる。"},{y:"い",e:"差異を さがす。"}]},
@@ -1025,84 +1013,109 @@ const D6=[
 ];
 
 const RAW_DATA={1:D1,2:D2,3:D3,4:D4,5:D5,6:D6};
-
 const GRADE_COLORS=["#FF6B9D","#FF9F43","#FECA57","#48DBFB","#1DD1A1","#A29BFE"];
 const GRADE_BG=["#FFF0F6","#FFF5EC","#FFFAEC","#F0FAFF","#F0FFF9","#F5F0FF"];
 const GRADE_EMOJI=["🌱","🌿","🌳","🌸","🌟","💎"];
+const DIFFICULTY_LABELS=["かんたん","ふつう","むずかしい"];
+const DIFFICULTY_DESC=["訓読みだけ","音読み・訓読みどちらか","音読み・訓読み両方"];
 
 function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
 function getStars(n,t){const p=n/t*10;return p>=10?3:p>=7?2:p>=4?1:0;}
 
-function buildPool(grade,enabledSet){
+function buildPool(grade,enabledSet,difficulty){
   const learned=GRADE_SETS[grade];
   const pool=[];
   for(const entry of(RAW_DATA[grade]||[])){
     if(!enabledSet.has(entry.k))continue;
-    for(const r of entry.r){
+    const kunyomi=entry.r.filter(r=>r.y.match(/^[ぁ-ん]/));
+    const onyomi=entry.r.filter(r=>!r.y.match(/^[ぁ-ん]/)||r.y.length<=2);
+    let readings=[];
+    if(difficulty===0){readings=kunyomi.length>0?[kunyomi[0]]:entry.r.slice(0,1);}
+    else if(difficulty===1){readings=shuffle(entry.r).slice(0,1);}
+    else{readings=entry.r;}
+    for(const r of readings){
       pool.push({kanji:entry.k,yomi:r.y,example:fmt(r.e,learned)});
     }
   }
   return pool;
 }
 
+function saveEnabled(next){
+  const toSave={};
+  for(let g=1;g<=6;g++)toSave[g]=[...next[g]];
+  localStorage.setItem("kanji-enabled",JSON.stringify(toSave));
+}
+
 export default function App(){
   const[screen,setScreen]=useState("home");
   const[testGrade,setTestGrade]=useState(1);
+  const[difficulty,setDifficulty]=useState(1);
   const[enabled,setEnabled]=useState(()=>{
-  try{
-    const saved=localStorage.getItem("kanji-enabled");
-    if(saved){
-      const parsed=JSON.parse(saved);
-      const e={};
-      for(let g=1;g<=6;g++)e[g]=new Set(parsed[g]||RAW_DATA[g].map(d=>d.k));
-      return e;
-    }
-  }catch(e){}
-  const e={};for(let g=1;g<=6;g++)e[g]=new Set(RAW_DATA[g].map(d=>d.k));return e;
-});
+    try{
+      const saved=localStorage.getItem("kanji-enabled");
+      if(saved){
+        const parsed=JSON.parse(saved);
+        const e={};
+        for(let g=1;g<=6;g++)e[g]=new Set(parsed[g]||RAW_DATA[g].map(d=>d.k));
+        return e;
+      }
+    }catch(e){}
+    const e={};for(let g=1;g<=6;g++)e[g]=new Set(RAW_DATA[g].map(d=>d.k));return e;
+  });
   const[settingGrade,setSettingGrade]=useState(1);
   const[search,setSearch]=useState("");
   const[questions,setQuestions]=useState([]);
   const[scores,setScores]=useState([]);
   const[scoreIdx,setScoreIdx]=useState(0);
   const[history,setHistory]=useState([]);
+  const[questionIdx,setQuestionIdx]=useState(0);
 
   const gc=GRADE_COLORS[testGrade-1];
   const gb=GRADE_BG[testGrade-1];
 
   function startTest(g){
     setTestGrade(g);
-    const pool=shuffle(buildPool(g,enabled[g]));
+    setScreen("difficulty");
+  }
+  function startWithDifficulty(d){
+    const pool=shuffle(buildPool(testGrade,enabled[testGrade],d));
     if(!pool.length){alert("漢字を えらんで ください");return;}
     const qs=pool.slice(0,Math.min(10,pool.length));
-    setQuestions(qs);setScores(new Array(qs.length).fill(null));setScoreIdx(0);setScreen("question");
+    setDifficulty(d);
+    setQuestions(qs);
+    setScores(new Array(qs.length).fill(null));
+    setScoreIdx(0);
+    setQuestionIdx(0);
+    setScreen("question");
   }
-  function saveEnabled(next){
-  const toSave={};
-  for(let g=1;g<=6;g++)toSave[g]=[...next[g]];
-  localStorage.setItem("kanji-enabled",JSON.stringify(toSave));
-}
-function toggleKanji(g,k){
-  setEnabled(p=>{
-    const next={...p,[g]:new Set(p[g].has(k)?[...p[g]].filter(x=>x!==k):[...p[g],k])};
-    saveEnabled(next);
-    return next;
-  });
-}
+  function toggleKanji(g,k){
+    setEnabled(p=>{
+      const next={...p,[g]:new Set(p[g].has(k)?[...p[g]].filter(x=>x!==k):[...p[g],k])};
+      saveEnabled(next);return next;
+    });
+  }
   function toggleAll(g){
-  const all=RAW_DATA[g].map(d=>d.k);
-  setEnabled(p=>{
-    const next={...p,[g]:p[g].size===all.length?new Set():new Set(all)};
-    saveEnabled(next);
-    return next;
-  });
-}
-  function mark(val){const s=[...scores];s[scoreIdx]=val;setScores(s);if(scoreIdx<questions.length-1)setScoreIdx(scoreIdx+1);}
-  function finish(){const correct=scores.filter(Boolean).length;setHistory(h=>[{grade:testGrade,questions,scores:[...scores],correct,date:new Date().toLocaleDateString("ja-JP")},...h.slice(0,9)]);setScreen("result");}
+    const all=RAW_DATA[g].map(d=>d.k);
+    setEnabled(p=>{
+      const next={...p,[g]:p[g].size===all.length?new Set():new Set(all)};
+      saveEnabled(next);return next;
+    });
+  }
+  function mark(val){
+    const s=[...scores];s[scoreIdx]=val;setScores(s);
+    if(scoreIdx<questions.length-1)setScoreIdx(scoreIdx+1);
+  }
+  function finish(){
+    const correct=scores.filter(Boolean).length;
+    setHistory(h=>[{grade:testGrade,difficulty,questions,scores:[...scores],correct,date:new Date().toLocaleDateString("ja-JP")},...h.slice(0,9)]);
+    setScreen("result");
+  }
 
   const allDone=questions.length>0&&scores.every(s=>s!==null);
   const correctCount=scores.filter(Boolean).length;
+  const q=questions[questionIdx]||questions[0];
 
+  // ===== HOME =====
   if(screen==="home")return(
     <div style={{padding:"1.5rem 1rem",maxWidth:400,margin:"0 auto"}}>
       <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
@@ -1111,14 +1124,13 @@ function toggleKanji(g,k){
         <p style={{color:"var(--color-text-secondary)",fontSize:13,margin:0}}>がくねんを えらんで スタート！</p>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:"1rem"}}>
-        {[1,2,3,4,5,6].map(g=>{const pool=buildPool(g,enabled[g]);return(
-          <button key={g} onClick={()=>startTest(g)} style={{background:GRADE_BG[g-1],border:`2.5px solid ${GRADE_COLORS[g-1]}`,borderRadius:16,padding:"16px 8px",cursor:"pointer"}}
+        {[1,2,3,4,5,6].map(g=>(
+          <button key={g} onClick={()=>startTest(g)} style={{background:GRADE_BG[g-1],border:`2.5px solid ${GRADE_COLORS[g-1]}`,borderRadius:16,padding:"20px 8px",cursor:"pointer"}}
             onMouseDown={e=>e.currentTarget.style.transform="scale(0.95)"} onMouseUp={e=>e.currentTarget.style.transform="scale(1)"}>
-            <div style={{fontSize:26}}>{GRADE_EMOJI[g-1]}</div>
-            <div style={{fontSize:17,fontWeight:700,color:GRADE_COLORS[g-1],marginTop:4}}>{g}ねんせい</div>
-            <div style={{fontSize:11,color:"#aaa",marginTop:2}}>{enabled[g].size}字・{pool.length}もん</div>
+            <div style={{fontSize:28}}>{GRADE_EMOJI[g-1]}</div>
+            <div style={{fontSize:18,fontWeight:700,color:GRADE_COLORS[g-1],marginTop:6}}>{g}ねんせい</div>
           </button>
-        );})}
+        ))}
       </div>
       <button onClick={()=>setScreen("settings")} style={{width:"100%",padding:"12px",marginBottom:10,background:"var(--color-background-secondary)",border:"1.5px solid #aaa",borderRadius:14,fontSize:14,fontWeight:600,color:"var(--color-text-primary)",cursor:"pointer"}}>
         ⚙️ おやせってい（習った漢字を えらぶ）
@@ -1127,7 +1139,10 @@ function toggleKanji(g,k){
         <p style={{fontSize:12,color:"var(--color-text-secondary)",fontWeight:600,marginBottom:8}}>📋 さいきんの きろく</p>
         {history.slice(0,3).map((h,i)=>(
           <div key={i} style={{background:GRADE_BG[h.grade-1],border:`1.5px solid ${GRADE_COLORS[h.grade-1]}30`,borderRadius:12,padding:"9px 14px",display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:8}}>
-            <span style={{fontSize:13,color:"var(--color-text-secondary)"}}>{h.date}　{h.grade}ねんせい</span>
+            <div>
+              <span style={{fontSize:13,color:"var(--color-text-secondary)"}}>{h.date}　{h.grade}ねんせい</span>
+              <span style={{fontSize:11,color:GRADE_COLORS[h.grade-1],marginLeft:6}}>{DIFFICULTY_LABELS[h.difficulty||1]}</span>
+            </div>
             <span style={{fontWeight:700,color:GRADE_COLORS[h.grade-1],fontSize:15}}>{h.correct}/{h.questions.length}　{"⭐".repeat(getStars(h.correct,h.questions.length))}</span>
           </div>
         ))}
@@ -1135,6 +1150,129 @@ function toggleKanji(g,k){
     </div>
   );
 
+  // ===== DIFFICULTY =====
+  if(screen==="difficulty")return(
+    <div style={{padding:"1.5rem 1rem",maxWidth:400,margin:"0 auto"}}>
+      <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:"1.5rem"}}>
+        <button onClick={()=>setScreen("home")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer",color:"#888"}}>←</button>
+        <h2 style={{fontSize:18,fontWeight:700,color:"var(--color-text-primary)",margin:0}}>{testGrade}ねんせい</h2>
+      </div>
+      <p style={{textAlign:"center",fontSize:16,fontWeight:600,color:"var(--color-text-primary)",marginBottom:"1.5rem"}}>むずかしさを えらんでね！</p>
+      <div style={{display:"grid",gap:12}}>
+        {[0,1,2].map(d=>{
+          const colors=["#1DD1A1","#48DBFB","#FF6B9D"];
+          const icons=["🌱","⭐","🔥"];
+          return(
+            <button key={d} onClick={()=>startWithDifficulty(d)} style={{background:`${colors[d]}15`,border:`2.5px solid ${colors[d]}`,borderRadius:16,padding:"20px 24px",cursor:"pointer",textAlign:"left",display:"flex",alignItems:"center",gap:16}}
+              onMouseDown={e=>e.currentTarget.style.transform="scale(0.98)"} onMouseUp={e=>e.currentTarget.style.transform="scale(1)"}>
+              <div style={{fontSize:32}}>{icons[d]}</div>
+              <div>
+                <div style={{fontSize:18,fontWeight:700,color:colors[d]}}>{DIFFICULTY_LABELS[d]}</div>
+                <div style={{fontSize:12,color:"var(--color-text-secondary)",marginTop:3}}>{DIFFICULTY_DESC[d]}</div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  // ===== QUESTION (1問ずつ) =====
+  if(screen==="question"){
+    const cq=questions[questionIdx];
+    if(!cq)return null;
+    const parts=cq.example.split(new RegExp(`(${cq.kanji})`,"g"));
+    const progress=(questionIdx+1)/questions.length;
+    return(
+      <div style={{padding:"1rem",maxWidth:400,margin:"0 auto"}}>
+        {/* ヘッダー */}
+        <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:"1rem"}}>
+          <button onClick={()=>setScreen("home")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer",color:"#888"}}>←</button>
+          <div style={{flex:1}}>
+            <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
+              <span style={{fontSize:12,color:"var(--color-text-secondary)"}}>{testGrade}ねんせい・{DIFFICULTY_LABELS[difficulty]}</span>
+              <span style={{fontSize:12,fontWeight:700,color:gc}}>{questionIdx+1} / {questions.length}</span>
+            </div>
+            <div style={{height:8,background:"#EEE",borderRadius:8,overflow:"hidden"}}>
+              <div style={{height:"100%",width:`${progress*100}%`,background:gc,borderRadius:8,transition:"width 0.3s"}}/>
+            </div>
+          </div>
+        </div>
+
+        {/* 問題カード */}
+        <div style={{background:gb,border:`2px solid ${gc}40`,borderRadius:24,padding:"2rem 1.5rem",textAlign:"center",marginBottom:"1.5rem",minHeight:200,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+          <p style={{fontSize:13,color:"#aaa",margin:"0 0 16px"}}>📖 ノートに かいてみよう！</p>
+          <div style={{fontSize:18,color:"#444",lineHeight:2.8,textAlign:"center"}}>
+            {parts.map((p,j)=>p===cq.kanji
+              ?<ruby key={j}><span style={{display:"inline-block",borderBottom:"2.5px solid #999",minWidth:"2em",textAlign:"center",paddingBottom:2,margin:"0 2px"}}>&nbsp;</span><rt style={{fontSize:12,color:"#888",fontWeight:600}}>{cq.yomi}</rt></ruby>
+              :<span key={j}>{p}</span>
+            )}
+          </div>
+        </div>
+
+        {/* 次へボタン */}
+        <button onClick={()=>{
+          if(questionIdx<questions.length-1){setQuestionIdx(questionIdx+1);}
+          else{setScoreIdx(0);setScreen("scoring");}
+        }} style={{width:"100%",padding:"16px",background:gc,color:"#FFF",border:"none",borderRadius:16,fontSize:17,fontWeight:700,cursor:"pointer",boxShadow:`0 4px 15px ${gc}60`}}>
+          {questionIdx<questions.length-1?"つぎの もんだいへ →":"✅ かけたら さいてんへ！"}
+        </button>
+
+        {/* 問題ドット */}
+        <div style={{display:"flex",justifyContent:"center",gap:6,marginTop:16,flexWrap:"wrap"}}>
+          {questions.map((_,i)=>(
+            <div key={i} onClick={()=>setQuestionIdx(i)} style={{width:10,height:10,borderRadius:"50%",cursor:"pointer",background:i===questionIdx?gc:i<questionIdx?"#ccc":"#eee",transition:"background 0.2s"}}/>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ===== SCORING =====
+  if(screen==="scoring"){
+    const sq=questions[scoreIdx];
+    return(
+      <div style={{padding:"1rem",maxWidth:400,margin:"0 auto"}}>
+        <div style={{display:"flex",alignItems:"center",marginBottom:"1rem"}}>
+          <button onClick={()=>{setQuestionIdx(0);setScreen("question");}} style={{background:"none",border:"none",fontSize:22,cursor:"pointer",color:"#888"}}>←</button>
+          <div style={{flex:1,textAlign:"center"}}><span style={{fontSize:14,color:"var(--color-text-secondary)"}}>さいてんちゅう</span></div>
+          <span style={{fontSize:14,fontWeight:700,color:gc}}>{scoreIdx+1}/{questions.length}</span>
+        </div>
+
+        {/* 進捗バー */}
+        <div style={{height:8,background:"#EEE",borderRadius:8,overflow:"hidden",marginBottom:"1rem"}}>
+          <div style={{height:"100%",width:`${(scoreIdx+1)/questions.length*100}%`,background:gc,borderRadius:8,transition:"width 0.3s"}}/>
+        </div>
+
+        <div style={{background:gb,border:`2px solid ${gc}50`,borderRadius:24,padding:"1.5rem",textAlign:"center",marginBottom:"1rem"}}>
+          <p style={{fontSize:13,color:"#aaa",margin:"0 0 8px"}}>もんだい {scoreIdx+1}</p>
+          <div style={{fontSize:14,color:"#888",marginBottom:8}}>よみかた：{sq.yomi}</div>
+          <div style={{fontSize:88,fontWeight:900,color:gc,lineHeight:1.1,margin:"6px 0 16px"}}>{sq.kanji}</div>
+          <div style={{fontSize:15,color:"#666",padding:"10px 20px",background:"#FFF",borderRadius:12,display:"inline-block"}}>{sq.example}</div>
+        </div>
+
+        <p style={{textAlign:"center",fontSize:14,color:"var(--color-text-secondary)",marginBottom:12}}>ノートと くらべて どうでしたか？</p>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:"1rem"}}>
+          <button onClick={()=>mark(true)} style={{padding:"18px",background:scores[scoreIdx]===true?"#1DD1A1":"#F0FFF9",border:`2.5px solid ${scores[scoreIdx]===true?"#1DD1A1":"#CCC"}`,borderRadius:16,fontSize:16,fontWeight:700,color:scores[scoreIdx]===true?"#FFF":"#1DD1A1",cursor:"pointer"}}>⭕ あってた！</button>
+          <button onClick={()=>mark(false)} style={{padding:"18px",background:scores[scoreIdx]===false?"#FF6B9D":"#FFF0F6",border:`2.5px solid ${scores[scoreIdx]===false?"#FF6B9D":"#CCC"}`,borderRadius:16,fontSize:16,fontWeight:700,color:scores[scoreIdx]===false?"#FFF":"#FF6B9D",cursor:"pointer"}}>❌ まちがえた</button>
+        </div>
+
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem"}}>
+          <button onClick={()=>setScoreIdx(Math.max(0,scoreIdx-1))} disabled={scoreIdx===0} style={{padding:"9px 16px",background:"#F5F5F5",border:"none",borderRadius:12,color:"#888",cursor:"pointer",fontSize:13}}>← まえ</button>
+          <div style={{display:"flex",gap:5,flexWrap:"wrap",justifyContent:"center",maxWidth:220}}>
+            {questions.map((_,i)=>(
+              <div key={i} onClick={()=>setScoreIdx(i)} style={{width:10,height:10,borderRadius:"50%",cursor:"pointer",background:scores[i]===null?"#DDD":scores[i]?"#1DD1A1":"#FF6B9D",border:i===scoreIdx?`2px solid ${gc}`:"none"}}/>
+            ))}
+          </div>
+          <button onClick={()=>setScoreIdx(Math.min(questions.length-1,scoreIdx+1))} disabled={scoreIdx===questions.length-1} style={{padding:"9px 16px",background:"#F5F5F5",border:"none",borderRadius:12,color:"#888",cursor:"pointer",fontSize:13}}>つぎ →</button>
+        </div>
+
+        {allDone&&<button onClick={finish} style={{width:"100%",padding:"15px",background:gc,color:"#FFF",border:"none",borderRadius:16,fontSize:17,fontWeight:700,cursor:"pointer",boxShadow:`0 4px 15px ${gc}60`}}>🏆 けっかを みる！</button>}
+      </div>
+    );
+  }
+
+  // ===== SETTINGS =====
   if(screen==="settings"){
     const sg=settingGrade;
     const filtered=RAW_DATA[sg].filter(d=>!search||d.k.includes(search)||d.r.some(r=>r.y.includes(search)));
@@ -1152,7 +1290,7 @@ function toggleKanji(g,k){
             <button key={g} onClick={()=>{setSettingGrade(g);setSearch("");}} style={{padding:"6px 12px",borderRadius:20,fontSize:12,fontWeight:700,cursor:"pointer",flexShrink:0,background:sg===g?GRADE_COLORS[g-1]:"var(--color-background-secondary)",color:sg===g?"#FFF":GRADE_COLORS[g-1],border:`1.5px solid ${GRADE_COLORS[g-1]}`}}>{g}年</button>
           ))}
         </div>
-        <p style={{fontSize:11,color:"var(--color-text-secondary)",margin:"0 0 8px"}}>選択中: {enabled[sg].size}/{RAW_DATA[sg].length}字　プール: {buildPool(sg,enabled[sg]).length}もん</p>
+        <p style={{fontSize:11,color:"var(--color-text-secondary)",margin:"0 0 8px"}}>選択中: {enabled[sg].size}/{RAW_DATA[sg].length}字</p>
         <input placeholder="かんじ・よみで しぼりこむ" value={search} onChange={e=>setSearch(e.target.value)}
           style={{width:"100%",marginBottom:10,padding:"9px 12px",borderRadius:10,fontSize:13,boxSizing:"border-box"}}/>
         <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:7}}>
@@ -1170,70 +1308,7 @@ function toggleKanji(g,k){
     );
   }
 
-  if(screen==="question")return(
-    <div style={{padding:"1rem",maxWidth:400,margin:"0 auto"}}>
-      <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:"1rem"}}>
-        <button onClick={()=>setScreen("home")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer",color:"#888"}}>←</button>
-        <div style={{flex:1,height:10,background:"#EEE",borderRadius:8}}><div style={{height:"100%",width:"100%",background:gc,borderRadius:8}}/></div>
-        <span style={{fontSize:13,color:gc,fontWeight:700}}>{testGrade}ねんせい</span>
-      </div>
-      <div style={{background:gb,border:`2px solid ${gc}40`,borderRadius:20,padding:"1.2rem 1rem",textAlign:"center",marginBottom:"1rem"}}>
-        <p style={{fontSize:13,color:"#888",margin:"0 0 1rem"}}>📖 ノートに かいてみよう！（{questions.length}もん）</p>
-        <div style={{display:"grid",gap:8}}>
-          {questions.map((q,i)=>{
-            const parts=q.example.split(new RegExp(`(${q.kanji})`,"g"));
-            return(
-              <div key={i} style={{background:"#FFF",border:`1.5px solid ${gc}30`,borderRadius:14,padding:"11px 14px",display:"flex",alignItems:"center",gap:12,textAlign:"left"}}>
-                <div style={{width:28,height:28,borderRadius:"50%",background:gc,color:"#FFF",display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700,fontSize:13,flexShrink:0}}>{i+1}</div>
-                <div style={{flex:1,fontSize:15,color:"#444",lineHeight:2.4}}>
-                  {parts.map((p,j)=>p===q.kanji
-                    ?<ruby key={j}><span style={{display:"inline-block",borderBottom:"2px solid #aaa",minWidth:"1.8em",textAlign:"center",paddingBottom:1}}>&nbsp;</span><rt style={{fontSize:10,color:"#aaa"}}>{q.yomi}</rt></ruby>
-                    :<span key={j}>{p}</span>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <button onClick={()=>{setScoreIdx(0);setScreen("scoring");}} style={{width:"100%",padding:"15px",background:gc,color:"#FFF",border:"none",borderRadius:16,fontSize:17,fontWeight:700,cursor:"pointer",boxShadow:`0 4px 15px ${gc}60`}}>✅ かけたら さいてんへ！</button>
-    </div>
-  );
-
-  if(screen==="scoring"){
-    const q=questions[scoreIdx];
-    return(
-      <div style={{padding:"1rem",maxWidth:400,margin:"0 auto"}}>
-        <div style={{display:"flex",alignItems:"center",marginBottom:"1rem"}}>
-          <button onClick={()=>setScreen("question")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer",color:"#888"}}>←</button>
-          <div style={{flex:1,textAlign:"center"}}><span style={{fontSize:14,color:"var(--color-text-secondary)"}}>さいてんちゅう</span></div>
-          <span style={{fontSize:14,fontWeight:700,color:gc}}>{scoreIdx+1}/{questions.length}</span>
-        </div>
-        <div style={{background:gb,border:`2px solid ${gc}50`,borderRadius:20,padding:"1.5rem",textAlign:"center",marginBottom:"1rem"}}>
-          <p style={{fontSize:13,color:"#aaa",margin:"0 0 8px"}}>もんだい {scoreIdx+1}</p>
-          <div style={{fontSize:14,color:"#888",marginBottom:8}}>よみかた：{q.yomi}</div>
-          <div style={{fontSize:78,fontWeight:900,color:gc,lineHeight:1.1,margin:"6px 0 12px"}}>{q.kanji}</div>
-          <div style={{fontSize:15,color:"#666",padding:"8px 16px",background:"#FFF",borderRadius:10,display:"inline-block"}}>{q.example}</div>
-        </div>
-        <p style={{textAlign:"center",fontSize:14,color:"var(--color-text-secondary)",marginBottom:10}}>ノートと くらべて どうでしたか？</p>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:"1rem"}}>
-          <button onClick={()=>mark(true)} style={{padding:"17px",background:scores[scoreIdx]===true?"#1DD1A1":"#F0FFF9",border:`2.5px solid ${scores[scoreIdx]===true?"#1DD1A1":"#CCC"}`,borderRadius:16,fontSize:15,fontWeight:700,color:scores[scoreIdx]===true?"#FFF":"#1DD1A1",cursor:"pointer"}}>⭕ あってた！</button>
-          <button onClick={()=>mark(false)} style={{padding:"17px",background:scores[scoreIdx]===false?"#FF6B9D":"#FFF0F6",border:`2.5px solid ${scores[scoreIdx]===false?"#FF6B9D":"#CCC"}`,borderRadius:16,fontSize:15,fontWeight:700,color:scores[scoreIdx]===false?"#FFF":"#FF6B9D",cursor:"pointer"}}>❌ まちがえた</button>
-        </div>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem"}}>
-          <button onClick={()=>setScoreIdx(Math.max(0,scoreIdx-1))} disabled={scoreIdx===0} style={{padding:"9px 16px",background:"#F5F5F5",border:"none",borderRadius:12,color:"#888",cursor:"pointer",fontSize:13}}>← まえ</button>
-          <div style={{display:"flex",gap:5,flexWrap:"wrap",justifyContent:"center",maxWidth:200}}>
-            {questions.map((_,i)=>(
-              <div key={i} onClick={()=>setScoreIdx(i)} style={{width:10,height:10,borderRadius:"50%",cursor:"pointer",background:scores[i]===null?"#DDD":scores[i]?"#1DD1A1":"#FF6B9D",border:i===scoreIdx?`2px solid ${gc}`:"none"}}/>
-            ))}
-          </div>
-          <button onClick={()=>setScoreIdx(Math.min(questions.length-1,scoreIdx+1))} disabled={scoreIdx===questions.length-1} style={{padding:"9px 16px",background:"#F5F5F5",border:"none",borderRadius:12,color:"#888",cursor:"pointer",fontSize:13}}>つぎ →</button>
-        </div>
-        {allDone&&<button onClick={finish} style={{width:"100%",padding:"15px",background:gc,color:"#FFF",border:"none",borderRadius:16,fontSize:17,fontWeight:700,cursor:"pointer",boxShadow:`0 4px 15px ${gc}60`}}>🏆 けっかを みる！</button>}
-      </div>
-    );
-  }
-
+  // ===== RESULT =====
   if(screen==="result"){
     const total=questions.length;const stars=getStars(correctCount,total);
     const msgs=[{text:"もっと れんしゅうしよう！💪",color:"#FF6B9D"},{text:"がんばったね！📚",color:"#FF9F43"},{text:"よく できました！⭐",color:"#FECA57"},{text:"かんぺき！🎊",color:"#1DD1A1"}];
@@ -1244,16 +1319,16 @@ function toggleKanji(g,k){
           <div style={{fontSize:58,marginBottom:6}}>{stars===3?"🎉":stars===2?"😊":stars===1?"😐":"😢"}</div>
           <div style={{display:"flex",justifyContent:"center",gap:4,marginBottom:8}}>{[0,1,2].map(i=><span key={i} style={{fontSize:24,color:i<stars?"#FECA57":"#DDD"}}>★</span>)}</div>
           <div style={{fontSize:46,fontWeight:900,color:gc}}>{correctCount}<span style={{fontSize:18,color:"#aaa"}}>/{total}</span></div>
-          <div style={{fontSize:15,color:"#aaa"}}>{Math.round(correctCount/total*100)}%</div>
-          <p style={{color:msg.color,fontWeight:700,fontSize:17,margin:"6px 0"}}>{msg.text}</p>
+          <div style={{fontSize:13,color:GRADE_COLORS[difficulty===0?0:difficulty===1?2:4],fontWeight:600,marginTop:4}}>{DIFFICULTY_LABELS[difficulty]}</div>
+          <p style={{color:msg.color,fontWeight:700,fontSize:17,margin:"8px 0"}}>{msg.text}</p>
         </div>
         <div style={{marginBottom:"1.5rem"}}>
           <p style={{fontSize:12,color:"var(--color-text-secondary)",fontWeight:600,marginBottom:8}}>{scores.some(s=>!s)?"❌ まちがえた もんだい":"✅ ぜんもん せいかい！"}</p>
           <div style={{display:"grid",gap:7}}>
             {questions.map((q,i)=>(
-              <div key={i} style={{background:scores[i]?"#F0FFF9":"#FFF0F6",border:`1.5px solid ${scores[i]?"#1DD1A140":"#FF6B9D40"}`,borderRadius:12,padding:"9px 12px",display:"flex",alignItems:"center",gap:10}}>
-                <span style={{fontSize:17}}>{scores[i]?"⭕":"❌"}</span>
-                <span style={{fontSize:26,fontWeight:700,color:scores[i]?"#1DD1A1":"#FF6B9D"}}>{q.kanji}</span>
+              <div key={i} style={{background:scores[i]?"#F0FFF9":"#FFF0F6",border:`1.5px solid ${scores[i]?"#1DD1A140":"#FF6B9D40"}`,borderRadius:12,padding:"10px 14px",display:"flex",alignItems:"center",gap:10}}>
+                <span style={{fontSize:18}}>{scores[i]?"⭕":"❌"}</span>
+                <span style={{fontSize:28,fontWeight:700,color:scores[i]?"#1DD1A1":"#FF6B9D"}}>{q.kanji}</span>
                 <div style={{flex:1}}>
                   <div style={{fontSize:13,color:"var(--color-text-secondary)"}}>{q.yomi}</div>
                   <div style={{fontSize:11,color:"#bbb"}}>{q.example}</div>
@@ -1263,7 +1338,7 @@ function toggleKanji(g,k){
           </div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
-          <button onClick={()=>startTest(testGrade)} style={{padding:"13px",background:gb,border:`2px solid ${gc}`,borderRadius:14,color:gc,fontWeight:700,fontSize:14,cursor:"pointer"}}>🔄 もういちど</button>
+          <button onClick={()=>setScreen("difficulty")} style={{padding:"13px",background:gb,border:`2px solid ${gc}`,borderRadius:14,color:gc,fontWeight:700,fontSize:14,cursor:"pointer"}}>🔄 もういちど</button>
           <button onClick={()=>setScreen("home")} style={{padding:"13px",background:gc,border:"none",borderRadius:14,color:"#FFF",fontWeight:700,fontSize:14,cursor:"pointer"}}>🏠 トップへ</button>
         </div>
       </div>
