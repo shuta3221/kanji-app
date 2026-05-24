@@ -124,9 +124,9 @@ const D2=[
   {k:"海",r:[{y:"うみ",e:"海で およぐ。"},{y:"かい",e:"海水が しょっぱい。"}]},
   {k:"絵",r:[{y:"え",e:"絵を かく。"},{y:"かい",e:"絵画を みる。"}]},
   {k:"外",r:[{y:"そと",e:"外に でる。"},{y:"がい",e:"外国に いく。"}]},
-  {k:"角",r:[{y:"かど",e:"かどを まがる。"},{y:"かく",e:"三角形の 角。"}]},
+  {k:"角",r:[{y:"かど",e:"かどを まがる。"},{y:"かく",e:"三角形の 角。"},{y:"つの",e:"うしの 角。"}]},
   {k:"活",r:[{y:"い",e:"元気に 活きる。"},{y:"かつ",e:"活動する。"}]},
-  {k:"間",r:[{y:"あいだ",e:"つくえの 間。"},{y:"かん",e:"時間を まもる。"}]},
+  {k:"間",r:[{y:"あいだ",e:"つくえの 間。"},{y:"かん",e:"時間を まもる。"},{y:"ま",e:"間に あう。"}]},
   {k:"丸",r:[{y:"まる",e:"丸い 形。"},{y:"がん",e:"砲丸を なげる。"}]},
   {k:"岩",r:[{y:"いわ",e:"岩に のる。"},{y:"がん",e:"岩石を みる。"}]},
   {k:"顔",r:[{y:"かお",e:"顔を あらう。"},{y:"がん",e:"顔面が あかい。"}]},
@@ -149,15 +149,15 @@ const D2=[
   {k:"戸",r:[{y:"と",e:"戸を しめる。"},{y:"こ",e:"江戸の 歴史。"}]},
   {k:"古",r:[{y:"ふる",e:"古い 本。"},{y:"こ",e:"古代の 話。"}]},
   {k:"午",r:[{y:"ご",e:"午後に べんきょう。"}]},
-  {k:"後",r:[{y:"あと",e:"食事の 後。"},{y:"ご",e:"午後に いく。"}]},
+  {k:"後",r:[{y:"あと",e:"食事の 後。"},{y:"ご",e:"午後に いく。"},{y:"うしろ",e:"車の 後。"},{y:"のち",e:"雨の 後。"}]},
   {k:"語",r:[{y:"かた",e:"物語を 語る。"},{y:"ご",e:"国語が すき。"}]},
-  {k:"工",r:[{y:"こう",e:"工作で つくる。"}]},
-  {k:"公",r:[{y:"こう",e:"公園で あそぶ。"}]},
+  {k:"工",r:[{y:"こう",e:"工作で つくる。"},{y:"く",e:"大工に なる。"}]},
+  {k:"公",r:[{y:"こう",e:"公園で あそぶ。"},{y:"おおやけ",e:"おおやけに する。"}]},
   {k:"広",r:[{y:"ひろ",e:"広い 公園。"},{y:"こう",e:"広大な 土地。"}]},
   {k:"交",r:[{y:"まじ",e:"仲間と 交わる。"},{y:"こう",e:"交通を まもる。"}]},
-  {k:"光",r:[{y:"ひかり",e:"光が さす。"},{y:"こう",e:"光線が まぶしい。"}]},
+  {k:"光",r:[{y:"ひかり",e:"光が さす。"},{y:"こう",e:"光線が まぶしい。"},{y:"ひか",e:"光る 月。"}]},
   {k:"考",r:[{y:"かんが",e:"よく 考える。"},{y:"こう",e:"考案する。"}]},
-  {k:"行",r:[{y:"い",e:"学校に 行く。"},{y:"こう",e:"旅行に いく。"}]},
+  {k:"行",r:[{y:"い",e:"学校に 行く。"},{y:"こう",e:"旅行に いく。"},{y:"ぎょう",e:"行事を する。"},{y:"おこな",e:"正しく 行う。"}]},
   {k:"高",r:[{y:"たか",e:"高い 山。"},{y:"こう",e:"高校に いく。"}]},
   {k:"黄",r:[{y:"き",e:"黄色い 花。"},{y:"おう",e:"黄金に ひかる。"}]},
   {k:"合",r:[{y:"あ",e:"答えが 合う。"},{y:"ごう",e:"合計する。"}]},
@@ -165,34 +165,34 @@ const D2=[
   {k:"黒",r:[{y:"くろ",e:"黒い 空。"},{y:"こく",e:"黒板に かく。"}]},
   {k:"今",r:[{y:"いま",e:"今 どこ。"},{y:"こん",e:"今週 いく。"}]},
   {k:"才",r:[{y:"さい",e:"十才に なる。"}]},
-  {k:"細",r:[{y:"こま",e:"細かく きる。"},{y:"さい",e:"細心に する。"}]},
+  {k:"細",r:[{y:"こま",e:"細かく きる。"},{y:"さい",e:"細心に する。"},{y:"ほそ",e:"細い 糸。"}]},
   {k:"作",r:[{y:"つく",e:"ケーキを 作る。"},{y:"さく",e:"作品を だす。"}]},
   {k:"算",r:[{y:"さん",e:"算数を とく。"}]},
   {k:"止",r:[{y:"と",e:"車を 止める。"},{y:"し",e:"中止に なる。"}]},
-  {k:"市",r:[{y:"まち",e:"市内を あるく。"},{y:"し",e:"市場で かう。"}]},
-  {k:"矢",r:[{y:"や",e:"矢を いる。"},{y:"や",e:"矢印を みる。"}]},
+  {k:"市",r:[{y:"まち",e:"市内を あるく。"},{y:"し",e:"市場で かう。"},{y:"いち",e:"市場に いく。"}]},
+  {k:"矢",r:[{y:"や",e:"矢を いる。"}]},
   {k:"姉",r:[{y:"あね",e:"姉と いく。"},{y:"し",e:"姉妹で あそぶ。"}]},
   {k:"思",r:[{y:"おも",e:"楽しいと 思う。"},{y:"し",e:"思考する。"}]},
-  {k:"紙",r:[{y:"かみ",e:"紙に かく。"},{y:"し",e:"手紙を おくる。"}]},
+  {k:"紙",r:[{y:"かみ",e:"紙に かく。"},{y:"がみ",e:"手紙を おくる。"},{y:"し",e:"白紙に かく。"}]},
   {k:"寺",r:[{y:"てら",e:"お寺に いく。"},{y:"じ",e:"寺院を みる。"}]},
   {k:"自",r:[{y:"みずか",e:"自ら する。"},{y:"じ",e:"自転車に のる。"}]},
   {k:"時",r:[{y:"とき",e:"楽しい 時。"},{y:"じ",e:"時間を まもる。"}]},
   {k:"室",r:[{y:"しつ",e:"教室に はいる。"}]},
-  {k:"社",r:[{y:"やしろ",e:"神社に いく。"},{y:"しゃ",e:"会社で はたらく。"}]},
+  {k:"社",r:[{y:"じゃ",e:"神社に いく。"},{y:"しゃ",e:"会社で はたらく。"},{y:"やしろ",e:"お社を みる。"}]},
   {k:"弱",r:[{y:"よわ",e:"弱い 風。"},{y:"じゃく",e:"弱点を なおす。"}]},
   {k:"首",r:[{y:"くび",e:"首を かしげる。"},{y:"しゅ",e:"首都に いく。"}]},
   {k:"秋",r:[{y:"あき",e:"秋に なる。"},{y:"しゅう",e:"秋分の 日。"}]},
   {k:"週",r:[{y:"しゅう",e:"今週 いそがしい。"}]},
   {k:"春",r:[{y:"はる",e:"春に さく。"},{y:"しゅん",e:"青春を たのしむ。"}]},
   {k:"書",r:[{y:"か",e:"日記を 書く。"},{y:"しょ",e:"書道で かく。"}]},
-  {k:"少",r:[{y:"すく",e:"少ない お金。"},{y:"しょう",e:"少年が はしる。"}]},
-  {k:"場",r:[{y:"ば",e:"運動場で あそぶ。"},{y:"じょう",e:"会場に いく。"}]},
-  {k:"色",r:[{y:"いろ",e:"色えんぴつ。"},{y:"しょく",e:"色彩が きれい。"}]},
+  {k:"少",r:[{y:"すく",e:"少ない お金。"},{y:"しょう",e:"少年が はしる。"},{y:"すこ",e:"少し まつ。"}]},
+  {k:"場",r:[{y:"じょう",e:"運動場で あそぶ。"},{y:"じょう",e:"会場に いく。"},{y:"ば",e:"その 場に いる。"}]},
+  {k:"色",r:[{y:"いろ",e:"色えんぴつ。"},{y:"しき",e:"色彩が きれい。"},{y:"しょく",e:"五色の 糸。"}]},
   {k:"食",r:[{y:"た",e:"りんごを 食べる。"},{y:"しょく",e:"食事を する。"}]},
   {k:"心",r:[{y:"こころ",e:"心が やさしい。"},{y:"しん",e:"心配する。"}]},
   {k:"新",r:[{y:"あたら",e:"新しい 本。"},{y:"しん",e:"新聞を よむ。"}]},
-  {k:"親",r:[{y:"おや",e:"親が くる。"},{y:"しん",e:"親切に する。"}]},
-  {k:"図",r:[{y:"はか",e:"計画を 図る。"},{y:"ず",e:"地図を みる。"}]},
+  {k:"親",r:[{y:"おや",e:"親が くる。"},{y:"しん",e:"親切に する。"},{y:"した",e:"親しい 人。"}]},
+  {k:"図",r:[{y:"はか",e:"計画を 図る。"},{y:"ず",e:"地図を みる。"},{y:"と",e:"図書室に いく。"}]},
   {k:"数",r:[{y:"かず",e:"数を かぞえる。"},{y:"すう",e:"算数を する。"}]},
   {k:"西",r:[{y:"にし",e:"西に しずむ。"},{y:"せい",e:"西洋を まなぶ。"}]},
   {k:"声",r:[{y:"こえ",e:"大きな 声。"},{y:"せい",e:"声援を おくる。"}]},
@@ -217,8 +217,8 @@ const D2=[
   {k:"長",r:[{y:"なが",e:"長い 川。"},{y:"ちょう",e:"町長が いる。"}]},
   {k:"鳥",r:[{y:"とり",e:"鳥が とぶ。"},{y:"ちょう",e:"野鳥を みる。"}]},
   {k:"朝",r:[{y:"あさ",e:"朝に おきる。"},{y:"ちょう",e:"朝食を たべる。"}]},
-  {k:"直",r:[{y:"なお",e:"まちがいを 直す。"},{y:"ちょく",e:"直線を ひく。"}]},
-  {k:"通",r:[{y:"とお",e:"学校に 通う。"},{y:"つう",e:"通学する。"}]},
+  {k:"直",r:[{y:"なお",e:"まちがいを 直す。"},{y:"ちょく",e:"直線を ひく。"},{y:"ただ",e:"直ちに いく。"}]},
+  {k:"通",r:[{y:"か",e:"学校に 通う。"},{y:"つう",e:"通学する。"}]},
   {k:"弟",r:[{y:"おとうと",e:"弟と あそぶ。"},{y:"てい",e:"兄弟で あそぶ。"}]},
   {k:"店",r:[{y:"みせ",e:"お店で かう。"},{y:"てん",e:"店員に いう。"}]},
   {k:"点",r:[{y:"てん",e:"百点を とる。"}]},
@@ -227,8 +227,8 @@ const D2=[
   {k:"東",r:[{y:"ひがし",e:"東から のぼる。"},{y:"とう",e:"東京に いく。"}]},
   {k:"当",r:[{y:"あ",e:"答えが 当たる。"},{y:"とう",e:"当番で する。"}]},
   {k:"答",r:[{y:"こた",e:"質問に 答える。"},{y:"とう",e:"答案を かく。"}]},
-  {k:"頭",r:[{y:"あたま",e:"頭が いたい。"},{y:"とう",e:"頭脳を きたえる。"}]},
-  {k:"同",r:[{y:"おな",e:"同じ 色。"},{y:"どう",e:"同意する。"}]},
+  {k:"頭",r:[{y:"あたま",e:"頭が いたい。"},{y:"ず",e:"頭脳を きたえる。"},{y:"かしら",e:"頭文字を かく。"}]},
+  {k:"同",r:[{y:"おな",e:"同じ 色。"},{y:"どう",e:"同じ 気もち。"}]},
   {k:"道",r:[{y:"みち",e:"道を あるく。"},{y:"どう",e:"書道で かく。"}]},
   {k:"読",r:[{y:"よ",e:"本を 読む。"},{y:"どく",e:"読書する。"}]},
   {k:"内",r:[{y:"うち",e:"家の 内。"},{y:"ない",e:"内容を みる。"}]},
@@ -239,7 +239,7 @@ const D2=[
   {k:"買",r:[{y:"か",e:"野菜を 買う。"},{y:"ばい",e:"売買する。"}]},
   {k:"麦",r:[{y:"むぎ",e:"麦を そだてる。"},{y:"ばく",e:"麦畑が ある。"}]},
   {k:"半",r:[{y:"なか",e:"半分に する。"},{y:"はん",e:"半年が たつ。"}]},
-  {k:"番",r:[{y:"ばん",e:"番号を よぶ。"},{y:"ばん",e:"当番で する。"}]},
+  {k:"番",r:[{y:"ばん",e:"番号を よぶ。"}]},
   {k:"父",r:[{y:"ちち",e:"父と いく。"},{y:"ふ",e:"父母に いう。"}]},
   {k:"風",r:[{y:"かぜ",e:"風が ふく。"},{y:"ふう",e:"風力が ある。"}]},
   {k:"分",r:[{y:"わ",e:"りんごを 分ける。"},{y:"ぶん",e:"自分で する。"}]},
@@ -256,16 +256,18 @@ const D2=[
   {k:"鳴",r:[{y:"な",e:"鳥が 鳴く。"},{y:"めい",e:"鳴動する。"}]},
   {k:"毛",r:[{y:"け",e:"猫の 毛。"},{y:"もう",e:"毛筆で かく。"}]},
   {k:"門",r:[{y:"もん",e:"学校の 門。"}]},
-  {k:"夜",r:[{y:"よる",e:"夜に みる。"},{y:"や",e:"夜間に いく。"}]},
+  {k:"夜",r:[{y:"よる",e:"夜に みる。"},{y:"や",e:"夜間に いく。"},{y:"よ",e:"夜中に おきる。"}]},
   {k:"野",r:[{y:"の",e:"野原で あそぶ。"},{y:"や",e:"野球を みる。"}]},
+  {k:"矢",r:[{y:"や",e:"矢を いる。"}]},
   {k:"友",r:[{y:"とも",e:"友だちと いく。"},{y:"ゆう",e:"友情を もつ。"}]},
-  {k:"用",r:[{y:"もち",e:"道具を 用いる。"},{y:"よう",e:"用意する。"}]},
+  {k:"用",r:[{y:"もち",e:"道具を 用いる。"},{y:"よう",e:"用事が ある。"}]},
   {k:"曜",r:[{y:"よう",e:"日曜日に いく。"}]},
   {k:"来",r:[{y:"く",e:"友だちが 来る。"},{y:"らい",e:"来年も する。"}]},
   {k:"里",r:[{y:"さと",e:"ふるさとの 里。"},{y:"り",e:"里山を あるく。"}]},
   {k:"理",r:[{y:"り",e:"理科が すき。"}]},
   {k:"話",r:[{y:"はな",e:"友だちと 話す。"},{y:"わ",e:"会話する。"}]},
 ];
+
 const D3=[
   {k:"悪",r:[{y:"わる",e:"悪いことを しない。"},{y:"あく",e:"悪人が つかまる。"}]},
   {k:"安",r:[{y:"やす",e:"安いねだんで かう。"},{y:"あん",e:"安全に する。"}]},
@@ -454,6 +456,7 @@ const D3=[
   {k:"路",r:[{y:"みち",e:"路地を あるく。"},{y:"ろ",e:"道路を わたる。"}]},
   {k:"和",r:[{y:"やわ",e:"和やかだ。"},{y:"わ",e:"和食を たべる。"}]},
 ];
+
 const D4=[
   {k:"愛",r:[{y:"あい",e:"愛する家族。"},{y:"あい",e:"愛情を もつ。"}]},
   {k:"案",r:[{y:"あん",e:"よい案が うかぶ。"}]},
@@ -643,6 +646,7 @@ const D4=[
   {k:"録",r:[{y:"ろく",e:"記録する。"}]},
   {k:"望",r:[{y:"のぞ",e:"医者に なることを 望む。"},{y:"ぼう",e:"希望を もつ。"}]},
 ];
+
 const D5=[
   {k:"圧",r:[{y:"お",e:"ボタンを 圧す。"},{y:"あつ",e:"気圧が さがる。"}]},
   {k:"移",r:[{y:"うつ",e:"新しい 家に 移る。"},{y:"い",e:"移動する。"}]},
@@ -685,7 +689,6 @@ const D5=[
   {k:"均",r:[{y:"きん",e:"均等に わける。"}]},
   {k:"禁",r:[{y:"きん",e:"禁止する。"}]},
   {k:"句",r:[{y:"く",e:"俳句を よむ。"}]},
-  {k:"型",r:[{y:"かた",e:"型を とる。"},{y:"けい",e:"血液型。"}]},
   {k:"経",r:[{y:"へ",e:"時間を 経る。"},{y:"けい",e:"経済を まなぶ。"}]},
   {k:"潔",r:[{y:"いさぎよ",e:"潔く みとめる。"},{y:"けつ",e:"清潔に する。"}]},
   {k:"件",r:[{y:"けん",e:"事件が おきる。"}]},
@@ -752,9 +755,7 @@ const D5=[
   {k:"績",r:[{y:"せき",e:"成績が あがる。"}]},
   {k:"接",r:[{y:"つ",e:"友だちに 接する。"},{y:"せつ",e:"接続する。"}]},
   {k:"設",r:[{y:"もう",e:"施設を 設ける。"},{y:"せつ",e:"設計する。"}]},
-  {k:"舌",r:[{y:"した",e:"舌を やけどする。"},{y:"ぜつ",e:"舌先で たしかめる。"}]},
   {k:"絶",r:[{y:"た",e:"努力を 絶やさない。"},{y:"ぜつ",e:"絶対に する。"}]},
-  {k:"銭",r:[{y:"ぜに",e:"銭湯に いく。"},{y:"せん",e:"お銭を だす。"}]},
   {k:"専",r:[{y:"もっぱ",e:"専門に まなぶ。"},{y:"せん",e:"専用を つかう。"}]},
   {k:"奏",r:[{y:"かな",e:"ピアノを 奏でる。"},{y:"そう",e:"演奏する。"}]},
   {k:"総",r:[{y:"す",e:"全員を 総じる。"},{y:"そう",e:"総合で 一番。"}]},
@@ -788,7 +789,6 @@ const D5=[
   {k:"肥",r:[{y:"こ",e:"土地が 肥える。"},{y:"ひ",e:"肥料を まく。"}]},
   {k:"非",r:[{y:"ひ",e:"非常口から でる。"}]},
   {k:"備",r:[{y:"そな",e:"地震に 備える。"},{y:"び",e:"設備を ととのえる。"}]},
-  {k:"俵",r:[{y:"たわら",e:"米俵を はこぶ。"},{y:"ひょう",e:"一俵の 重さ。"}]},
   {k:"評",r:[{y:"ひょう",e:"高い 評価。"}]},
   {k:"貧",r:[{y:"まず",e:"貧しい 生活。"},{y:"ひん",e:"貧困を なくす。"}]},
   {k:"布",r:[{y:"ぬの",e:"布を きる。"},{y:"ふ",e:"布告する。"}]},
@@ -820,8 +820,8 @@ const D5=[
   {k:"留",r:[{y:"と",e:"外国に 留まる。"},{y:"りゅう",e:"留学する。"}]},
   {k:"領",r:[{y:"りょう",e:"領土を まもる。"}]},
 ];
+
 const D6=[
-  {k:"胃",r:[{y:"い",e:"胃が いたい。"},{y:"い",e:"胃腸薬を のむ。"}]},
   {k:"異",r:[{y:"こと",e:"意見が 異なる。"},{y:"い",e:"差異を さがす。"}]},
   {k:"遺",r:[{y:"のこ",e:"遺産を まもる。"},{y:"い",e:"遺跡を みる。"}]},
   {k:"域",r:[{y:"いき",e:"地域の 人と なかよく。"},{y:"いき",e:"水域で 泳ぐ。"}]},
@@ -921,16 +921,12 @@ const D6=[
   {k:"盛",r:[{y:"も",e:"料理を 盛る。"},{y:"せい",e:"盛大な 祭り。"}]},
   {k:"聖",r:[{y:"せい",e:"聖人の 教え。"},{y:"せい",e:"神聖な 場所。"}]},
   {k:"誠",r:[{y:"まこと",e:"誠実に する。"},{y:"せい",e:"誠意を もつ。"}]},
-  {k:"舌",r:[{y:"した",e:"舌を やけどする。"},{y:"ぜつ",e:"舌先で たしかめる。"}]},
   {k:"宣",r:[{y:"の",e:"夢を 宣言する。"},{y:"せん",e:"宣伝する。"}]},
   {k:"泉",r:[{y:"いずみ",e:"泉の 水。"},{y:"せん",e:"温泉に はいる。"}]},
   {k:"洗",r:[{y:"あら",e:"手を 洗う。"},{y:"せん",e:"洗顔する。"}]},
   {k:"染",r:[{y:"そ",e:"布を 染める。"},{y:"せん",e:"染色する。"}]},
-  {k:"銭",r:[{y:"ぜに",e:"銭湯に いく。"},{y:"せん",e:"さい銭を いれる。"}]},
   {k:"善",r:[{y:"よ",e:"善い ことを する。"},{y:"ぜん",e:"善人が たすける。"}]},
-  {k:"奏",r:[{y:"かな",e:"ピアノを 奏でる。"},{y:"そう",e:"演奏する。"}]},
   {k:"窓",r:[{y:"まど",e:"窓を あける。"},{y:"そう",e:"車窓から みる。"}]},
-  {k:"創",r:[{y:"つく",e:"新しいものを 創る。"},{y:"そう",e:"創造力を そだてる。"}]},
   {k:"装",r:[{y:"よそお",e:"きれいに 装う。"},{y:"そう",e:"装身具を つける。"}]},
   {k:"層",r:[{y:"そう",e:"地層を みる。"},{y:"そう",e:"高層ビル。"}]},
   {k:"操",r:[{y:"あやつ",e:"人形を 操る。"},{y:"そう",e:"操作する。"}]},
@@ -951,11 +947,9 @@ const D6=[
   {k:"著",r:[{y:"いちじる",e:"著しく 成長。"},{y:"ちょ",e:"著作権を まもる。"}]},
   {k:"庁",r:[{y:"ちょう",e:"県庁で はたらく。"},{y:"ちょう",e:"省庁に いく。"}]},
   {k:"頂",r:[{y:"いただ",e:"山の 頂。"},{y:"ちょう",e:"頂上に のぼる。"}]},
-  {k:"腸",r:[{y:"ちょう",e:"腸が 元気。"},{y:"ちょう",e:"大腸の はたらき。"}]},
   {k:"潮",r:[{y:"しお",e:"潮が みちる。"},{y:"ちょう",e:"風潮が かわる。"}]},
   {k:"賃",r:[{y:"ちん",e:"家賃を はらう。"},{y:"ちん",e:"賃金を もらう。"}]},
   {k:"痛",r:[{y:"いた",e:"歯が 痛い。"},{y:"つう",e:"腹痛で やすむ。"}]},
-  {k:"敵",r:[{y:"てき",e:"敵と たたかう。"},{y:"てき",e:"天敵から にげる。"}]},
   {k:"展",r:[{y:"の",e:"腕を 展ばす。"},{y:"てん",e:"展示会を みる。"}]},
   {k:"討",r:[{y:"う",e:"敵を 討つ。"},{y:"とう",e:"討議する。"}]},
   {k:"党",r:[{y:"とう",e:"政党に はいる。"},{y:"とう",e:"党派を こえる。"}]},
@@ -976,7 +970,6 @@ const D6=[
   {k:"否",r:[{y:"いな",e:"否定する。"},{y:"ひ",e:"合否を まつ。"}]},
   {k:"批",r:[{y:"ひ",e:"批判する。"},{y:"ひ",e:"批評を よむ。"}]},
   {k:"秘",r:[{y:"ひ",e:"秘密を まもる。"},{y:"ひ",e:"神秘的だ。"}]},
-  {k:"俵",r:[{y:"たわら",e:"米俵を はこぶ。"},{y:"ひょう",e:"一俵の 重さ。"}]},
   {k:"腹",r:[{y:"はら",e:"腹が へる。"},{y:"ふく",e:"立腹する。"}]},
   {k:"奮",r:[{y:"ふる",e:"勇気を 奮う。"},{y:"ふん",e:"興奮する。"}]},
   {k:"並",r:[{y:"なら",e:"友だちと 並ぶ。"},{y:"へい",e:"並木道。"}]},
@@ -998,7 +991,6 @@ const D6=[
   {k:"訳",r:[{y:"わけ",e:"理由と 訳。"},{y:"やく",e:"英語を 訳す。"}]},
   {k:"郵",r:[{y:"ゆう",e:"郵便で おくる。"},{y:"ゆう",e:"郵送する。"}]},
   {k:"優",r:[{y:"やさ",e:"友だちに 優しく。"},{y:"ゆう",e:"優秀な 成績。"}]},
-  {k:"預",r:[{y:"あず",e:"荷物を 預ける。"},{y:"よ",e:"預金する。"}]},
   {k:"幼",r:[{y:"おさな",e:"幼い 子ども。"},{y:"よう",e:"幼児が あそぶ。"}]},
   {k:"欲",r:[{y:"ほ",e:"もっと 欲しい。"},{y:"よく",e:"欲望を おさえる。"}]},
   {k:"翌",r:[{y:"よく",e:"翌日に あう。"},{y:"よく",e:"翌年も する。"}]},
@@ -1028,7 +1020,6 @@ function buildPool(grade,enabledSet,difficulty){
   for(const entry of(RAW_DATA[grade]||[])){
     if(!enabledSet.has(entry.k))continue;
     const kunyomi=entry.r.filter(r=>r.y.match(/^[ぁ-ん]/));
-    const onyomi=entry.r.filter(r=>!r.y.match(/^[ぁ-ん]/)||r.y.length<=2);
     let readings=[];
     if(difficulty===0){readings=kunyomi.length>0?[kunyomi[0]]:entry.r.slice(0,1);}
     else if(difficulty===1){readings=shuffle(entry.r).slice(0,1);}
@@ -1115,7 +1106,6 @@ export default function App(){
   const correctCount=scores.filter(Boolean).length;
   const q=questions[questionIdx]||questions[0];
 
-  // ===== HOME =====
   if(screen==="home")return(
     <div style={{padding:"1.5rem 1rem",maxWidth:400,margin:"0 auto"}}>
       <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
@@ -1150,7 +1140,6 @@ export default function App(){
     </div>
   );
 
-  // ===== DIFFICULTY =====
   if(screen==="difficulty")return(
     <div style={{padding:"1.5rem 1rem",maxWidth:400,margin:"0 auto"}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:"1.5rem"}}>
@@ -1177,7 +1166,6 @@ export default function App(){
     </div>
   );
 
-  // ===== QUESTION (1問ずつ) =====
   if(screen==="question"){
     const cq=questions[questionIdx];
     if(!cq)return null;
@@ -1185,7 +1173,6 @@ export default function App(){
     const progress=(questionIdx+1)/questions.length;
     return(
       <div style={{padding:"1rem",maxWidth:400,margin:"0 auto"}}>
-        {/* ヘッダー */}
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:"1rem"}}>
           <button onClick={()=>setScreen("home")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer",color:"#888"}}>←</button>
           <div style={{flex:1}}>
@@ -1198,8 +1185,6 @@ export default function App(){
             </div>
           </div>
         </div>
-
-        {/* 問題カード */}
         <div style={{background:gb,border:`2px solid ${gc}40`,borderRadius:24,padding:"2rem 1.5rem",textAlign:"center",marginBottom:"1.5rem",minHeight:200,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
           <p style={{fontSize:13,color:"#aaa",margin:"0 0 16px"}}>📖 ノートに かいてみよう！</p>
           <div style={{fontSize:18,color:"#444",lineHeight:2.8,textAlign:"center"}}>
@@ -1209,16 +1194,12 @@ export default function App(){
             )}
           </div>
         </div>
-
-        {/* 次へボタン */}
         <button onClick={()=>{
           if(questionIdx<questions.length-1){setQuestionIdx(questionIdx+1);}
           else{setScoreIdx(0);setScreen("scoring");}
         }} style={{width:"100%",padding:"16px",background:gc,color:"#FFF",border:"none",borderRadius:16,fontSize:17,fontWeight:700,cursor:"pointer",boxShadow:`0 4px 15px ${gc}60`}}>
           {questionIdx<questions.length-1?"つぎの もんだいへ →":"✅ かけたら さいてんへ！"}
         </button>
-
-        {/* 問題ドット */}
         <div style={{display:"flex",justifyContent:"center",gap:6,marginTop:16,flexWrap:"wrap"}}>
           {questions.map((_,i)=>(
             <div key={i} onClick={()=>setQuestionIdx(i)} style={{width:10,height:10,borderRadius:"50%",cursor:"pointer",background:i===questionIdx?gc:i<questionIdx?"#ccc":"#eee",transition:"background 0.2s"}}/>
@@ -1228,7 +1209,6 @@ export default function App(){
     );
   }
 
-  // ===== SCORING =====
   if(screen==="scoring"){
     const sq=questions[scoreIdx];
     return(
@@ -1238,25 +1218,20 @@ export default function App(){
           <div style={{flex:1,textAlign:"center"}}><span style={{fontSize:14,color:"var(--color-text-secondary)"}}>さいてんちゅう</span></div>
           <span style={{fontSize:14,fontWeight:700,color:gc}}>{scoreIdx+1}/{questions.length}</span>
         </div>
-
-        {/* 進捗バー */}
         <div style={{height:8,background:"#EEE",borderRadius:8,overflow:"hidden",marginBottom:"1rem"}}>
           <div style={{height:"100%",width:`${(scoreIdx+1)/questions.length*100}%`,background:gc,borderRadius:8,transition:"width 0.3s"}}/>
         </div>
-
         <div style={{background:gb,border:`2px solid ${gc}50`,borderRadius:24,padding:"1.5rem",textAlign:"center",marginBottom:"1rem"}}>
           <p style={{fontSize:13,color:"#aaa",margin:"0 0 8px"}}>もんだい {scoreIdx+1}</p>
           <div style={{fontSize:14,color:"#888",marginBottom:8}}>よみかた：{sq.yomi}</div>
           <div style={{fontSize:88,fontWeight:900,color:gc,lineHeight:1.1,margin:"6px 0 16px"}}>{sq.kanji}</div>
           <div style={{fontSize:15,color:"#666",padding:"10px 20px",background:"#FFF",borderRadius:12,display:"inline-block"}}>{sq.example}</div>
         </div>
-
         <p style={{textAlign:"center",fontSize:14,color:"var(--color-text-secondary)",marginBottom:12}}>ノートと くらべて どうでしたか？</p>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:"1rem"}}>
           <button onClick={()=>mark(true)} style={{padding:"18px",background:scores[scoreIdx]===true?"#1DD1A1":"#F0FFF9",border:`2.5px solid ${scores[scoreIdx]===true?"#1DD1A1":"#CCC"}`,borderRadius:16,fontSize:16,fontWeight:700,color:scores[scoreIdx]===true?"#FFF":"#1DD1A1",cursor:"pointer"}}>⭕ あってた！</button>
           <button onClick={()=>mark(false)} style={{padding:"18px",background:scores[scoreIdx]===false?"#FF6B9D":"#FFF0F6",border:`2.5px solid ${scores[scoreIdx]===false?"#FF6B9D":"#CCC"}`,borderRadius:16,fontSize:16,fontWeight:700,color:scores[scoreIdx]===false?"#FFF":"#FF6B9D",cursor:"pointer"}}>❌ まちがえた</button>
         </div>
-
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1rem"}}>
           <button onClick={()=>setScoreIdx(Math.max(0,scoreIdx-1))} disabled={scoreIdx===0} style={{padding:"9px 16px",background:"#F5F5F5",border:"none",borderRadius:12,color:"#888",cursor:"pointer",fontSize:13}}>← まえ</button>
           <div style={{display:"flex",gap:5,flexWrap:"wrap",justifyContent:"center",maxWidth:220}}>
@@ -1266,13 +1241,11 @@ export default function App(){
           </div>
           <button onClick={()=>setScoreIdx(Math.min(questions.length-1,scoreIdx+1))} disabled={scoreIdx===questions.length-1} style={{padding:"9px 16px",background:"#F5F5F5",border:"none",borderRadius:12,color:"#888",cursor:"pointer",fontSize:13}}>つぎ →</button>
         </div>
-
         {allDone&&<button onClick={finish} style={{width:"100%",padding:"15px",background:gc,color:"#FFF",border:"none",borderRadius:16,fontSize:17,fontWeight:700,cursor:"pointer",boxShadow:`0 4px 15px ${gc}60`}}>🏆 けっかを みる！</button>}
       </div>
     );
   }
 
-  // ===== SETTINGS =====
   if(screen==="settings"){
     const sg=settingGrade;
     const filtered=RAW_DATA[sg].filter(d=>!search||d.k.includes(search)||d.r.some(r=>r.y.includes(search)));
@@ -1308,7 +1281,6 @@ export default function App(){
     );
   }
 
-  // ===== RESULT =====
   if(screen==="result"){
     const total=questions.length;const stars=getStars(correctCount,total);
     const msgs=[{text:"もっと れんしゅうしよう！💪",color:"#FF6B9D"},{text:"がんばったね！📚",color:"#FF9F43"},{text:"よく できました！⭐",color:"#FECA57"},{text:"かんぺき！🎊",color:"#1DD1A1"}];
